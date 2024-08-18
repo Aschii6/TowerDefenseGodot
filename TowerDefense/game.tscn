@@ -1,0 +1,159 @@
+[gd_scene load_steps=13 format=3 uid="uid://qmjn31xi0n5o"]
+
+[ext_resource type="Texture2D" uid="uid://c0yg4gxivccvw" path="res://assets/fields_tileset.png" id="1_c7kwv"]
+[ext_resource type="Script" path="res://game.gd" id="1_ee5gf"]
+[ext_resource type="Resource" uid="uid://x0w0lqfn6uxt" path="res://game_stats.tres" id="2_41ogr"]
+[ext_resource type="PackedScene" uid="uid://c7lmeptwi8q0g" path="res://towers/tower_place.tscn" id="4_104lv"]
+[ext_resource type="Texture2D" uid="uid://crl54ika7wgb5" path="res://assets/gold_coin.png" id="6_oupon"]
+[ext_resource type="FontFile" uid="uid://ec0drryk5i15" path="res://assets/kenney_mini_square.ttf" id="7_8kaa0"]
+[ext_resource type="Texture2D" uid="uid://dky1c2kqao72i" path="res://assets/heart.png" id="7_inuie"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4riew"]
+texture = ExtResource("1_c7kwv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_h6qhv"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_4riew")
+
+[sub_resource type="Curve2D" id="Curve2D_8elpn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 538, 207, 0, 0, 0, 0, 433, 206, 0, 0, 0, 0, 431, 47, 0, 0, 0, 0, 337, 46, 0, 0, 0, 0, 337, 142, 0, 0, 0, 0, 241, 142, 0, 0, 0, 0, 242, 237, 0, 0, 0, 0, 144, 237, 0, 0, 0, 0, 143, 111, 0, 0, 0, 0, -41, 111)
+}
+point_count = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_c14wl"]
+font = ExtResource("7_8kaa0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_aj76e"]
+font = ExtResource("7_8kaa0")
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ee5gf")
+game_stats = ExtResource("2_41ogr")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_h6qhv")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 327681, 4, 65536, 327681, 4, 131072, 327681, 4, 196608, 393217, 3, 262144, 327681, 4, 327680, 327681, 4, 393216, 327681, 4, 458752, 327681, 4, 524288, 327681, 4, 1, 327681, 4, 65537, 327681, 4, 131073, 327681, 4, 196609, 393217, 3, 262145, 327681, 4, 327681, 327681, 4, 393217, 327681, 4, 458753, 327681, 4, 524289, 327681, 4, 2, 327681, 4, 65538, 327681, 4, 131074, 327681, 4, 196610, 393217, 3, 262146, 327681, 4, 327682, 327681, 4, 393218, 327681, 4, 458754, 327681, 4, 524290, 327681, 4, 3, 327681, 4, 65539, 327681, 4, 131075, 327681, 4, 196611, 393217, 3, 262147, 327681, 4, 327683, 327681, 4, 393219, 327681, 4, 458755, 327681, 4, 524291, 327681, 4, 4, 327681, 4, 65540, 327681, 4, 131076, 327681, 4, 196612, 196609, 1, 262148, 458753, 3, 327684, 458753, 3, 393220, 458753, 3, 458756, 65537, 3, 524292, 327681, 4, 5, 327681, 4, 65541, 327681, 4, 131077, 327681, 4, 196613, 327681, 4, 262149, 327681, 4, 327685, 327681, 4, 393221, 327681, 4, 458757, 393217, 3, 524293, 327681, 4, 6, 327681, 4, 65542, 327681, 4, 131078, 327681, 4, 196614, 327681, 4, 458758, 393217, 3, 524294, 327681, 4, 7, 327681, 4, 65543, 327681, 4, 131079, 327681, 4, 196615, 327681, 4, 262151, 65537, 1, 327687, 458753, 3, 393223, 458753, 3, 458759, 196609, 3, 524295, 327681, 4, 8, 327681, 4, 65544, 327681, 4, 131080, 327681, 4, 196616, 327681, 4, 262152, 393217, 3, 327688, 327681, 4, 393224, 327681, 4, 458760, 327681, 4, 524296, 327681, 4, 9, 327681, 4, 65545, 327681, 4, 131081, 327681, 4, 196617, 327681, 4, 262153, 393217, 3, 327689, 327681, 4, 393225, 327681, 4, 458761, 327681, 4, 524297, 327681, 4, 10, 327681, 4, 65546, 65537, 1, 131082, 458753, 3, 196618, 458753, 3, 262154, 196609, 3, 327690, 327681, 4, 393226, 327681, 4, 458762, 327681, 4, 524298, 327681, 4, 11, 327681, 4, 65547, 393217, 3, 131083, 327681, 4, 196619, 327681, 4, 262155, 327681, 4, 327691, 327681, 4, 393227, 327681, 4, 458763, 327681, 4, 524299, 327681, 4, 12, 327681, 4, 65548, 393217, 3, 131084, 327681, 4, 196620, 327681, 4, 262156, 327681, 4, 327692, 327681, 4, 393228, 327681, 4, 458764, 327681, 4, 524300, 327681, 4, 13, 327681, 4, 65549, 196609, 1, 131085, 458753, 3, 196621, 458753, 3, 262157, 458753, 3, 327693, 458753, 3, 393229, 65537, 3, 458765, 327681, 4, 524301, 327681, 4, 14, 327681, 4, 65550, 327681, 4, 131086, 327681, 4, 196622, 327681, 4, 262158, 327681, 4, 327694, 327681, 4, 393230, 393217, 3, 458766, 327681, 4, 524302, 327681, 4, 15, 327681, 4, 65551, 327681, 4, 131087, 327681, 4, 196623, 327681, 4, 262159, 327681, 4, 327695, 327681, 4, 393231, 393217, 3, 458767, 327681, 4, 524303, 327681, 4, 327686, 327681, 4, 393222, 327681, 4, 262150, 327681, 4)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8elpn")
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Coins"]
+position = Vector2(10, 10)
+texture = ExtResource("6_oupon")
+
+[node name="Label" type="Label" parent="Coins"]
+offset_left = 20.0
+offset_top = -1.0
+offset_right = 34.0
+offset_bottom = 19.0
+size_flags_horizontal = 0
+text = "x "
+label_settings = SubResource("LabelSettings_c14wl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Node2D" parent="."]
+position = Vector2(499, 11)
+
+[node name="Sprite2D" type="Sprite2D" parent="Health"]
+texture = ExtResource("7_inuie")
+
+[node name="Label" type="Label" parent="Health"]
+offset_left = -36.0
+offset_top = -13.0
+offset_right = -10.0
+offset_bottom = 7.0
+text = "x"
+label_settings = SubResource("LabelSettings_aj76e")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="TowerPlace" parent="Towers" instance=ExtResource("4_104lv")]
+position = Vector2(385, 115)
+
+[node name="TowerPlace2" parent="Towers" instance=ExtResource("4_104lv")]
+position = Vector2(192, 185)
+
+[node name="TowerPlace3" parent="Towers" instance=ExtResource("4_104lv")]
+position = Vector2(288, 90)
+
+[node name="SlimeSpawnTimer" type="Timer" parent="."]
+wait_time = 2.2
+one_shot = true
+autostart = true
+
+[node name="OrcSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true

@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://cb2a504yl3uv8"]
+
+[ext_resource type="PackedScene" uid="uid://cp4uvqau3oumr" path="res://towers/tower.tscn" id="1_t2tgr"]
+[ext_resource type="Texture2D" uid="uid://d1axx1p2ejpup" path="res://assets/archer_tower1.png" id="2_mhpdu"]
+[ext_resource type="Script" path="res://components/upgrade_component.gd" id="3_be5po"]
+[ext_resource type="Texture2D" uid="uid://bfenr71mby05a" path="res://assets/archer.png" id="3_fmp1q"]
+[ext_resource type="PackedScene" uid="uid://5gudtob7pr3i" path="res://towers/archer_tower_two.tscn" id="4_m368x"]
+[ext_resource type="FontFile" uid="uid://ec0drryk5i15" path="res://assets/kenney_mini_square.ttf" id="5_imvav"]
+[ext_resource type="Script" path="res://components/shoot_component.gd" id="6_qowi6"]
+[ext_resource type="PackedScene" uid="uid://cibukfpri8uuo" path="res://projectiles/arrow.tscn" id="7_tyeb4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0nre"]
+size = Vector2(66, 81)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u78th"]
+radius = 125.0
+
+[node name="ArcherTowerOne" instance=ExtResource("1_t2tgr")]
+
+[node name="TowerSprite" parent="." index="0"]
+position = Vector2(-1, -33)
+texture = ExtResource("2_mhpdu")
+
+[node name="ArcherSprite" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -25)
+texture = ExtResource("3_fmp1q")
+
+[node name="UpgradeComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("tower", "button", "hover_area")]
+script = ExtResource("3_be5po")
+tower = NodePath("..")
+upgraded_tower = ExtResource("4_m368x")
+cost = 15
+button = NodePath("../Gui/Control/Button")
+hover_area = NodePath("../Gui/HoverArea")
+
+[node name="Gui" type="Node2D" parent="." index="3"]
+
+[node name="HoverArea" type="Area2D" parent="Gui" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gui/HoverArea" index="0"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_e0nre")
+debug_color = Color(0, 0.6, 0.701961, 0.117647)
+
+[node name="Control" type="Control" parent="Gui" index="1"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -31.0
+offset_right = 33.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Gui/Control" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.5
+offset_top = -18.0
+offset_right = 25.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("5_imvav")
+theme_override_font_sizes/font_size = 8
+text = "Pff"
+
+[node name="ShootComponent" type="Node" parent="." index="4" node_paths=PackedStringArray("tower", "shoot_area", "shoot_marker")]
+script = ExtResource("6_qowi6")
+tower = NodePath("..")
+shoot_area = NodePath("../ShootArea")
+shoot_cd = 1.0
+projectile = ExtResource("7_tyeb4")
+shoot_marker = NodePath("../ShootMarker")
+
+[node name="ShootArea" type="Area2D" parent="." index="5"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea" index="0"]
+shape = SubResource("CircleShape2D_u78th")
+debug_color = Color(0.741176, 0.419608, 0.541176, 0.105882)
+
+[node name="ShootMarker" type="Marker2D" parent="." index="6"]
+position = Vector2(0, -30)

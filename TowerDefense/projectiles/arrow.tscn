@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cibukfpri8uuo"]
+
+[ext_resource type="PackedScene" uid="uid://cjb57witdsmfi" path="res://projectiles/projectile.tscn" id="1_yh3wr"]
+[ext_resource type="Script" path="res://projectiles/arrow.gd" id="2_7602r"]
+[ext_resource type="Texture2D" uid="uid://dxtwxvflbpkes" path="res://assets/arrow.png" id="2_m0ocf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfmhf"]
+size = Vector2(2, 12)
+
+[node name="Arrow" instance=ExtResource("1_yh3wr")]
+script = ExtResource("2_7602r")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_m0ocf")
+
+[node name="ProjectileMoveComponent" parent="." index="1"]
+speed = 200
+projectile_range = 270
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_lfmhf")

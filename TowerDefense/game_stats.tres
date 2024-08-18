@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameStats" load_steps=2 format=3 uid="uid://x0w0lqfn6uxt"]
+
+[ext_resource type="Script" path="res://game_stats.gd" id="1_20iwa"]
+
+[resource]
+script = ExtResource("1_20iwa")
+level = 1
+coins = 20
+health = 50

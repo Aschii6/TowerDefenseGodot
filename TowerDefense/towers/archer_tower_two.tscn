@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://5gudtob7pr3i"]
+
+[ext_resource type="PackedScene" uid="uid://cp4uvqau3oumr" path="res://towers/tower.tscn" id="1_ywn72"]
+[ext_resource type="Texture2D" uid="uid://btwes53rldp0l" path="res://assets/archer_tower2.png" id="2_04d1b"]
+[ext_resource type="Script" path="res://components/shoot_component.gd" id="3_1k45e"]
+[ext_resource type="PackedScene" uid="uid://cibukfpri8uuo" path="res://projectiles/arrow.tscn" id="4_yqvm0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0eoi5"]
+radius = 125.0
+
+[node name="ArcherTowerTwo" instance=ExtResource("1_ywn72")]
+
+[node name="TowerSprite" parent="." index="0"]
+position = Vector2(-1, -33)
+texture = ExtResource("2_04d1b")
+
+[node name="ShootComponent" type="Node" parent="." index="1" node_paths=PackedStringArray("tower", "shoot_area", "shoot_marker")]
+script = ExtResource("3_1k45e")
+tower = NodePath("..")
+shoot_area = NodePath("../ShootArea")
+shoot_cd = 0.5
+projectile = ExtResource("4_yqvm0")
+shoot_marker = NodePath("../ShootMarker")
+
+[node name="ShootArea" type="Area2D" parent="." index="2"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea" index="0"]
+shape = SubResource("CircleShape2D_0eoi5")
+debug_color = Color(0.741176, 0.419608, 0.541176, 0.105882)
+
+[node name="ShootMarker" type="Marker2D" parent="." index="3"]
+position = Vector2(0, -30)

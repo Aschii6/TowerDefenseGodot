@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7lmeptwi8q0g"]
+
+[ext_resource type="PackedScene" uid="uid://cp4uvqau3oumr" path="res://towers/tower.tscn" id="1_2dhjd"]
+[ext_resource type="Texture2D" uid="uid://t8mx0ndbi0mv" path="res://assets/place_for_tower.png" id="2_iqlt0"]
+[ext_resource type="Script" path="res://towers/tower_place.gd" id="2_xxgdm"]
+[ext_resource type="FontFile" uid="uid://ec0drryk5i15" path="res://assets/kenney_mini_square.ttf" id="3_iuq71"]
+[ext_resource type="Script" path="res://components/upgrade_component.gd" id="4_wqj5v"]
+[ext_resource type="PackedScene" uid="uid://cb2a504yl3uv8" path="res://towers/archer_tower_one.tscn" id="5_igr1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2kvp"]
+size = Vector2(66, 81)
+
+[node name="TowerPlace" instance=ExtResource("1_2dhjd")]
+script = ExtResource("2_xxgdm")
+
+[node name="TowerSprite" parent="." index="0"]
+texture = ExtResource("2_iqlt0")
+
+[node name="UpgradeComponent" type="Node" parent="." index="1" node_paths=PackedStringArray("tower", "button", "hover_area")]
+script = ExtResource("4_wqj5v")
+tower = NodePath("..")
+upgraded_tower = ExtResource("5_igr1j")
+cost = 5
+button = NodePath("../Gui/Control/Button")
+hover_area = NodePath("../Gui/HoverArea")
+
+[node name="Gui" type="Node2D" parent="." index="2"]
+
+[node name="HoverArea" type="Area2D" parent="Gui" index="0"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gui/HoverArea" index="0"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_u2kvp")
+debug_color = Color(0, 0.6, 0.701961, 0.117647)
+
+[node name="Control" type="Control" parent="Gui" index="1"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -31.0
+offset_right = 33.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Gui/Control" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.5
+offset_top = -18.0
+offset_right = 25.5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_iuq71")
+theme_override_font_sizes/font_size = 8
+text = "Archer (5)"

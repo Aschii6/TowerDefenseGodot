@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c704bm4nl2x72"]
+
+[ext_resource type="Script" path="res://components/projectile_move_component.gd" id="1_pmqdu"]
+
+[node name="ProjectileMoveComponent" type="Node"]
+script = ExtResource("1_pmqdu")
